@@ -1,7 +1,3 @@
-// alchemy_mod.js - Мод для Sandboxels, добавляющий алхимические элементы
-// Сохраните этот файл в папку mods игры
-
-// Добавляем новый элемент "Философский камень"
 elements.philosopher_stone = {
     color: ["#c9a87b", "#b8860b", "#d4af37"],
     behavior: behaviors.POWDER,
@@ -17,7 +13,6 @@ elements.philosopher_stone = {
     }
 };
 
-// Добавляем "Эликсир жизни"
 elements.elixir_of_life = {
     color: ["#00fa9a", "#00ff7f", "#00ced1"],
     behavior: behaviors.LIQUID,
@@ -35,7 +30,6 @@ elements.elixir_of_life = {
         "wheat_seed": { elem1: "wheat", chance: 0.4 }
     },
     tick: function(pixel) {
-        // Исцеляет близлежащие организмы
         const adjacentCells = [
             {x: pixel.x + 1, y: pixel.y},
             {x: pixel.x - 1, y: pixel.y},
@@ -52,7 +46,6 @@ elements.elixir_of_life = {
     }
 };
 
-// Добавляем "Пыль пробуждения"
 elements.dust_of_awakening = {
     color: ["#ffffff", "#e8e8e8", "#d0d0d0"],
     behavior: behaviors.POWDER,
@@ -67,7 +60,6 @@ elements.dust_of_awakening = {
         "water": { elem1: "soda", chance: 0.2 }
     },
     tick: function(pixel) {
-        // Создаёт искры при контакте с металлами
         const below = getPixel(pixel.x, pixel.y + 1);
         if (below && (below.element === "iron" || below.element === "copper")) {
             if (Math.random() < 0.05) {
@@ -77,25 +69,22 @@ elements.dust_of_awakening = {
     }
 };
 
-// Добавляем новую категорию в игру
 if (!categories.alchemy) {
     categories.alchemy = {
-        name: "Алхимия",
+        name: "alchemy",
         colour: ["#9370db", "#8a2be2"],
         visible: 1
     };
 }
 
-// Добавляем реакции между новыми элементами
 if (!elements.alchemy_reactions) {
     reactions.alchemy = [
         { elem1: "philosopher_stone", elem2: "elixir_of_life", elem3: "dust_of_awakening", chance: 0.05 }
     ];
 }
 
-// Добавляем инструмент для сбора ресурсов
 tools.collect = {
-    name: "Собрать",
+    name: "Make",
     run: function(pixel) {
         if (pixel && pixel.element) {
             console.log(`Собран элемент: ${pixel.element}`);
@@ -104,13 +93,12 @@ tools.collect = {
     }
 };
 
-// Добавляем описание для мода в мод-менеджере
 if (typeof modInfo === "undefined") {
     var modInfo = [];
 }
 modInfo.push({
     name: "Alchemy Expansion",
     author: "Sandboxels Modder",
-    description: "Добавляет философский камень, эликсир жизни и пыль пробуждения. Новые элементы взаимодействуют с базовыми материалами и между собой.",
+    description: "OKAK BOMBOCLAT",
     version: "1.0.0"
 });
